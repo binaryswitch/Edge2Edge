@@ -13,7 +13,10 @@ app.get('/', function (req, res) {
 
 app.get('/board', function (req, res){
     var jsonObj = {"boards": []};
-    jsonObj.boards.push({"id": 0, "name": "Board 0"});
+    jsonObj.boards.push({"id": 0, "name": "Board A"});
+    jsonObj.boards.push({"id": 1, "name": "Board B"});
+    jsonObj.boards.push({"id": 2, "name": "Board C"});
+    jsonObj.boards.push({"id": 3, "name": "Board D"});
 
     res.send(jsonObj);
 })
