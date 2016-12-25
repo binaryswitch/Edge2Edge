@@ -1,0 +1,13 @@
+{
+  "name": "edge2edge",
+  "version": "0.1.0",
+  "private": true,
+
+  "dependencies": {
+    "express": "latest"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+
