@@ -12,7 +12,7 @@ app.get('/board', function (req, res){
     res.send(jsonObj);
 })
 
-app.get('/board/{boardId}/pins', function (req, res){
+app.get('/board/:boardId/pins', function (req, res){
     var jsonObj = {"pins": []};
     jsonObj.boards.push({"id": 0, "type": "png"});
     jsonObj.boards.push({"id": 1, "type": "png"});
