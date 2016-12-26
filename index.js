@@ -1,5 +1,7 @@
 var express = require('express')
 var app = express()
+var axios = require('axios')
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,13 +14,18 @@ app.get('/', function (req, res) {
 })
 
 app.get('/board', function (req, res){
-    var jsonObj = {"boards": []};
-    jsonObj.boards.push({"id": 0, "name": "Board A"});
-    jsonObj.boards.push({"id": 1, "name": "Board B"});
-    jsonObj.boards.push({"id": 2, "name": "Board C"});
-    jsonObj.boards.push({"id": 3, "name": "Board D"});
 
-    res.send(jsonObj);
+    axios.get('https://edge2edge-db.firebaseio.com/public/users/0.json')
+      .then(function (response) {
+        res.send(response.data);
+
+      })
+      .catch(function (error) {
+        console.log(error);
+          res.send({"data":null, "message": ""+ error});
+
+      });
+
 })
 
 app.get('/board/:boardId/pins', function (req, res){
@@ -26,7 +33,7 @@ app.get('/board/:boardId/pins', function (req, res){
     jsonObj.pins.push({"id": 0, "type": "png"});
     jsonObj.pins.push({"id": 1, "type": "png"});
 
-    res.send(jsonObj);
+    res.send({"data":{jsonObj}});
 })
 
 
